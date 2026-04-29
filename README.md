@@ -58,3 +58,14 @@ Pemilihan tergantung pada kebutuhan analisis citra.
 Dibuat untuk UTS Pengolahan Citra Digital
 Tanggal: 28 April 2026
 ================================================================================
+
+
+
+
+
+
+
+
+
+Jawaban 2
+1. Perbandingan Visual dan Nilai Piksel Rata-rataBerdasarkan hasil eksekusi program pada citra singa, didapatkan perbandingan sebagai berikut:Low Pass Filter (LPF):Visual: Citra tampak lebih halus (blur). Detail tajam seperti helai bulu singa dan tekstur rumput menjadi kurang jelas. Ini membuktikan fungsi LPF sebagai pereduksi noise.Nilai Rata-rata: Nilainya hampir sama dengan citra asli. Hal ini karena kernel LPF yang digunakan memiliki jumlah total elemen sama dengan 1 ($9 \times 1/9 = 1$), sehingga energi atau tingkat kecerahan rata-rata gambar tetap terjaga.High Pass Filter (HPF):Visual: Citra didominasi warna hitam, namun garis-garis tepi objek (mata, hidung, dan garis luar surai) terlihat menonjol dengan warna putih/abu-abu terang.Nilai Rata-rata: Nilainya sangat kecil (mendekati 0). Secara matematis, jumlah seluruh elemen di dalam kernel HPF ini adalah $0$ ($-1 \times 8 + 8 = 0$). Karena area yang warnanya seragam akan menghasilkan nilai 0 setelah konvolusi, maka hanya area dengan perubahan intensitas tajam (tepi) yang tersisa.Band Pass Filter / Sharpening (BPF):Visual: Citra terlihat lebih tajam dan "pedas" dibanding aslinya. Detail kecil pada surai singa menjadi lebih kontras dan menonjol.Nilai Rata-rata: Nilainya cenderung stabil atau sedikit meningkat dibanding asli. Kernel ini bekerja dengan memperkuat perbedaan antara piksel pusat dengan tetangganya tanpa membuang informasi dasar gambar.2. Hubungan Domain Spasial dan Domain FrekuensiTerdapat korelasi langsung antara manipulasi piksel di Domain Spasial dengan karakteristiknya di Domain Frekuensi:Low Pass Filter: Di domain frekuensi, filter ini bertindak sebagai penghambat frekuensi tinggi (yang mewakili detail tajam dan noise) dan hanya meloloskan frekuensi rendah (warna latar belakang yang luas/homogen). Di domain spasial, ini dicapai dengan merata-ratakan nilai piksel.High Pass Filter: Filter ini memblokir frekuensi rendah (informasi kecerahan umum) dan hanya melewatkan frekuensi tinggi (perubahan mendadak). Hasilnya di domain spasial adalah hilangnya area luas yang warnanya sama, menyisakan hanya garis-garis tepi objek.Band Pass Filter (Sharpening): Filter penajaman bekerja dengan mengisolasi komponen frekuensi tinggi lalu menambahkannya kembali ke citra asli. Secara spasial, ini berarti kita memperkuat kontras lokal pada area yang memiliki perubahan warna mendadak agar terlihat lebih detail.
